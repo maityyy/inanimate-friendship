@@ -1,0 +1,72 @@
+plugins {
+    id "net.fabricmc.fabric-loom" version "$loom_version" // also java-library, idea, eclipse
+}
+
+java {
+    // Minecraft 1.20.5+ uses Java 21
+    sourceCompatibility = JavaVersion.VERSION_25
+
+    // Generate sources
+    withSourcesJar()
+}
+
+// https://modrinth.com/mod/modmenu
+repositories {
+    maven {
+        name = "Terraformers MC"
+        url = "https://maven.terraformersmc.com"
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:$minecraft_version"
+    implementation "net.fabricmc:fabric-loader:$loader_version" // mixin and other libs
+    implementation "com.terraformersmc:modmenu:$project.mod_menu_version"
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "inanimate-friendship" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client // https://github.com/FabricMC/fabric-loom/issues/1346
+        }
+    }
+}
+
+afterEvaluate {
+    loom.runs.configureEach {
+        // https://gist.github.com/maityyy/3dbcd558d58a6412c3a2a38c72706e8e
+        vmArg "-javaagent:${ configurations.compileClasspath.find { it.name.contains("sponge-mixin") } }"
+
+        // https://github.com/SpongePowered/Mixin/wiki/Mixin-Java-System-Properties
+        property "mixin.debug.export", "true" // export classes with all mixin changes to run/.mixin.out
+
+        if (environment == "client") {
+            programArgs "--username", "Dev"
+        }
+    }
+}
+
+processResources {
+    var replaceProperties = [
+            version: version,
+            supported_minecraft_version_range: supported_minecraft_version_range
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching("fabric.mod.json") {
+        expand replaceProperties + [ project: project ]
+    }
+}
+
+jar {
+    manifest {
+        attributes "Main-Class" : "com.github.maityyy.inanimatefriendship.Main"
+    }
+
+    // Include license file
+    jar.from "LICENSE"
+}

@@ -1,0 +1,27 @@
+# Fabric
+run/*
+!run/saves/
+run/saves/*
+!run/saves/promo world/
+!run/saves/promo world/**
+src/main/generated/.cache/
+
+# Mac OS
+.DS_Store
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/runConfigurations/
+.idea/modules/
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+*.iws
+*.iml
+*.ipr

@@ -1,0 +1,20 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.github.maityyy.inanimatefriendship.mod.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "mixins": [
+        "allay_adjust_item_deposit_pos.AllayAiMixin",
+        "allay_dance_particles.AllayMixin",
+        "allay_note_block_relink.AllayAiMixin",
+        "allay_note_block_relink.AllayVibrationUserMixin",
+        "allay_older_items_priority.NearestItemSensorMixin",
+        "allay_reset_item_pickup_cooldown.AllayAiMixin",
+        "copper_golem_increase_comfort_fall_distance.CopperGolemMixin",
+        "copper_golem_increase_comfort_fall_distance.LivingEntityMixin",
+        "copper_golem_remove_hold_item_stack_size_limit.TransportItemsBetweenContainersMixin"
+    ]
+}

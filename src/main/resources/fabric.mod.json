@@ -1,0 +1,33 @@
+{
+    "schemaVersion": 1,
+    "id": "inanimatefriendship",
+    "version": "$version",
+    "name": "Inanimate Friendship",
+    "description": "Server-side rebalance of the Allay and Copper Golem",
+    "icon": "icon.png",
+    "authors": [
+        "maityyy"
+    ],
+    "contact": {
+        "homepage": "https://modrinth.com/project/inanimate-friendship",
+        "sources": "https://github.com/maityyy/inanimate-friendship",
+        "issues": "https://github.com/maityyy/inanimate-friendship/issues"
+    },
+    "license": "CC BY-NC-SA 4.0",
+    "environment": "*",
+    "depends": {
+        "minecraft": "$supported_minecraft_version_range"
+    },
+    "mixins": [
+        "inanimatefriendship.mixins.json"
+    ],
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.discord": "https://discord.gg/h9EQcB5mVu",
+                "modmenu.donate": "https://ko-fi.com/maity",
+                "modmenu.twitter": "https://x.com/maityyyy_"
+            }
+        }
+    }
+}
