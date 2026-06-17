@@ -46,7 +46,7 @@ class AllayAiMixin {
         return true;
     }
 
-    // Mojang uses the chebyshev distance but provides the squared distance (1024 = DISTANCE_TO_WANTED_ITEM²).
+    // Mojang uses the Chebyshev distance but provides the squared distance (1024 = DISTANCE_TO_WANTED_ITEM²).
     // Without this fix, the allay will keep trying to return to the note block until it is more than 1024 blocks away.
     @ModifyConstant(method = "shouldDepositItemsAtLikedNoteblock", constant = @Constant(intValue = 1024))
     private static int useCorrectCloseEnoughDistance(int isCloseEnoughDist) {
