@@ -21,7 +21,9 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:$minecraft_version"
     implementation "net.fabricmc:fabric-loader:$loader_version" // mixin and other libs
-    implementation "com.terraformersmc:modmenu:$project.mod_menu_version"
+    if (!mod_menu_version.isEmpty()) {
+        implementation "com.terraformersmc:modmenu:$mod_menu_version"
+    }
 }
 
 loom {
