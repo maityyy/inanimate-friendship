@@ -3,7 +3,7 @@ plugins {
 }
 
 java {
-    // Minecraft 1.20.5+ uses Java 21
+    // Minecraft 26.1+ uses Java 25
     sourceCompatibility = JavaVersion.VERSION_25
 
     // Generate sources
