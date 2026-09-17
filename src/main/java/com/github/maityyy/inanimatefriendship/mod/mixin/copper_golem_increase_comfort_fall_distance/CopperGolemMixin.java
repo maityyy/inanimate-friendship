@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 class CopperGolemMixin {
 
     @Inject(method = "createAttributes", at = @At("RETURN"))
-    private static void increaseSafeFallDistace(CallbackInfoReturnable<Builder> callback) {
+    private static void increaseSafeFallDistance(CallbackInfoReturnable<Builder> callback) {
         callback.getReturnValue().add(Attributes.SAFE_FALL_DISTANCE, 6);
     }
 }
